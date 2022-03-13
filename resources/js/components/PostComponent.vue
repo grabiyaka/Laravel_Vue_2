@@ -1,40 +1,74 @@
 <template>
+  <div>
+    <single-post-component></single-post-component>
     <div>
-        <single-post-component></single-post-component>
-        <div>Name: {{ name }}</div>
-        <button @click="ohMy()">Click me pls</button>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Job</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(person, index) in persons">
+            <th scope="row">{{ index + 1 }}</th>
+            <td>{{ person.name }}</td>
+            <td>{{ person.age }}</td>
+            <td>{{ person.job }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+    <button @click="ohMy()">Click me pls</button>
+  </div>
 </template>
 
 <script>
-import SinglePostComponent from './SinglePostComponent.vue'
+import SinglePostComponent from "./SinglePostComponent.vue";
 
 export default {
-    name: "PostComponent",
+  name: "PostComponent",
 
-    data() {
-        return {
-            name: 'Vasa',
-            age: 21
-        }
-    },
-
-    methods: {
-        sayHello(){
-            console.log('Hello');
+  data() {
+    return {
+      persons: [
+        {
+          name: "Vasya",
+          age: 20,
+          job: "teacher",
         },
-        ohMy(){
-            console.log('Ohh..Myyy..')
-        }
+        {
+          name: "Vovan",
+          age: 50,
+          job: "nuhachBebru",
+        },
+        {
+          name: "Ivan",
+          age: 98,
+          job: "fiksik",
+        },
+      ],
+    };
+  },
+
+  methods: {
+    sayHello() {
+      console.log("Hello");
     },
+    ohMy() {
+      console.log("Ohh..Myyy..");
+    },
+  },
 
-    components: {
-        SinglePostComponent,  
-    }
-}
+  computed: {},
 
+  components: {
+    SinglePostComponent,
+  },
+};
 </script>
 
 <style scoped>
-
 </style>

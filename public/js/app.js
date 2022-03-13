@@ -5377,23 +5377,54 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PostComponent",
   data: function data() {
     return {
-      name: 'Vasa',
-      age: 21
+      persons: [{
+        name: "Vasya",
+        age: 20,
+        job: "teacher"
+      }, {
+        name: "Vovan",
+        age: 50,
+        job: "nuhachBebru"
+      }, {
+        name: "Ivan",
+        age: 98,
+        job: "fiksik"
+      }]
     };
   },
   methods: {
     sayHello: function sayHello() {
-      console.log('Hello');
+      console.log("Hello");
     },
     ohMy: function ohMy() {
-      console.log('Ohh..Myyy..');
+      console.log("Ohh..Myyy..");
     }
   },
+  computed: {},
   components: {
     SinglePostComponent: _SinglePostComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
@@ -28097,7 +28128,29 @@ var render = function () {
     [
       _c("single-post-component"),
       _vm._v(" "),
-      _c("div", [_vm._v("Name: " + _vm._s(_vm.name))]),
+      _c("div", [
+        _c("table", { staticClass: "table" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.persons, function (person, index) {
+              return _c("tr", [
+                _c("th", { attrs: { scope: "row" } }, [
+                  _vm._v(_vm._s(index + 1)),
+                ]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(person.name))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(person.age))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(person.job))]),
+              ])
+            }),
+            0
+          ),
+        ]),
+      ]),
       _vm._v(" "),
       _c(
         "button",
@@ -28114,7 +28167,24 @@ var render = function () {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Age")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Job")]),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 
