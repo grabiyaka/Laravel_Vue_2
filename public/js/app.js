@@ -5375,9 +5375,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PostComponent",
+  data: function data() {
+    return {
+      name: 'Vasa',
+      age: 21
+    };
+  },
+  methods: {
+    sayHello: function sayHello() {
+      console.log('Hello');
+    },
+    ohMy: function ohMy() {
+      console.log('Ohh..Myyy..');
+    }
+  },
   components: {
     SinglePostComponent: _SinglePostComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
@@ -28076,7 +28092,27 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("single-post-component")], 1)
+  return _c(
+    "div",
+    [
+      _c("single-post-component"),
+      _vm._v(" "),
+      _c("div", [_vm._v("Name: " + _vm._s(_vm.name))]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          on: {
+            click: function ($event) {
+              return _vm.ohMy()
+            },
+          },
+        },
+        [_vm._v("Click me pls")]
+      ),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
