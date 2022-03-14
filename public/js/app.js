@@ -5401,48 +5401,23 @@ __webpack_require__.r(__webpack_exports__);
   name: "PostComponent",
   data: function data() {
     return {
-      persons: [{
-        name: "Vasya",
-        age: 20,
-        job: "teacher"
-      }, {
-        name: "Vovan",
-        age: 50,
-        job: "nuhachBebru"
-      }, {
-        name: "Ivan",
-        age: 98,
-        job: "fiksik"
-      }, {
-        name: "Nastya",
-        age: 6,
-        job: "traveler"
-      }, {
-        name: "Sveta",
-        age: 19,
-        job: "hz"
-      }, {
-        name: "Loh",
-        age: 21,
-        job: "lol"
-      }]
+      persons: null
     };
   },
+  mounted: function mounted() {
+    this.getPersons();
+  },
   methods: {
-    sayHello: function sayHello() {
-      console.log("Hello");
-    },
-    ohMy: function ohMy() {
-      console.log("Ohh..Myyy..");
+    getPersons: function getPersons() {
+      var _this = this;
+
+      axios.get("/persons").then(function (data) {
+        _this.persons = data.data;
+        console.log(data);
+      })["catch"](function (error) {})["finally"]({});
     }
   },
-  computed: {
-    oldPersons: function oldPersons() {
-      return this.persons.filter(function (el) {
-        return el.age > 20;
-      });
-    }
-  },
+  computed: {},
   components: {
     SinglePostComponent: _SinglePostComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
@@ -28152,10 +28127,10 @@ var render = function () {
           _vm._v(" "),
           _c(
             "tbody",
-            _vm._l(_vm.oldPersons, function (person, index) {
-              return _c("tr", { key: index }, [
+            _vm._l(_vm.persons, function (person) {
+              return _c("tr", [
                 _c("th", { attrs: { scope: "row" } }, [
-                  _vm._v(_vm._s(index + 1)),
+                  _vm._v(_vm._s(person.id)),
                 ]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(person.name))]),
@@ -28169,18 +28144,6 @@ var render = function () {
           ),
         ]),
       ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          on: {
-            click: function ($event) {
-              return _vm.ohMy()
-            },
-          },
-        },
-        [_vm._v("Click me pls")]
-      ),
     ],
     1
   )
@@ -28192,13 +28155,13 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("id")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("name")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Age")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("age")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Job")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("job")]),
       ]),
     ])
   },
