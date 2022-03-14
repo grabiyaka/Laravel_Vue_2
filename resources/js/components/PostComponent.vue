@@ -12,7 +12,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(person, index) in persons">
+          <tr v-for="(person, index) in oldPersons" :key="index">
             <th scope="row">{{ index + 1 }}</th>
             <td>{{ person.name }}</td>
             <td>{{ person.age }}</td>
@@ -49,6 +49,21 @@ export default {
           age: 98,
           job: "fiksik",
         },
+        {
+          name: "Nastya",
+          age: 6,
+          job: "traveler",
+        },
+        {
+          name: "Sveta",
+          age: 19,
+          job: "hz",
+        },
+        {
+          name: "Loh",
+          age: 21,
+          job: "lol",
+        },
       ],
     };
   },
@@ -62,7 +77,11 @@ export default {
     },
   },
 
-  computed: {},
+  computed: {
+    oldPersons(){
+      return this.persons.filter(el => {return el.age > 20})
+    }
+  },
 
   components: {
     SinglePostComponent,

@@ -5413,6 +5413,18 @@ __webpack_require__.r(__webpack_exports__);
         name: "Ivan",
         age: 98,
         job: "fiksik"
+      }, {
+        name: "Nastya",
+        age: 6,
+        job: "traveler"
+      }, {
+        name: "Sveta",
+        age: 19,
+        job: "hz"
+      }, {
+        name: "Loh",
+        age: 21,
+        job: "lol"
       }]
     };
   },
@@ -5424,7 +5436,13 @@ __webpack_require__.r(__webpack_exports__);
       console.log("Ohh..Myyy..");
     }
   },
-  computed: {},
+  computed: {
+    oldPersons: function oldPersons() {
+      return this.persons.filter(function (el) {
+        return el.age > 20;
+      });
+    }
+  },
   components: {
     SinglePostComponent: _SinglePostComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
@@ -28134,8 +28152,8 @@ var render = function () {
           _vm._v(" "),
           _c(
             "tbody",
-            _vm._l(_vm.persons, function (person, index) {
-              return _c("tr", [
+            _vm._l(_vm.oldPersons, function (person, index) {
+              return _c("tr", { key: index }, [
                 _c("th", { attrs: { scope: "row" } }, [
                   _vm._v(_vm._s(index + 1)),
                 ]),
