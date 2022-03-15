@@ -1,8 +1,9 @@
 <template>
   <div>
+    <create-component></create-component>
     <single-post-component></single-post-component>
     <div>
-      <table class="table">
+      <!-- <table class="table">
         <thead>
           <tr>
             <th scope="col">id</th>
@@ -20,13 +21,14 @@
           </tr>
          
         </tbody>
-      </table>
+      </table> -->
     </div>
   </div>
 </template>
 
 <script>
 import SinglePostComponent from "./SinglePostComponent.vue";
+import CreateComponent from "./CreateComponent";
 
 export default {
   name: "PostComponent",
@@ -38,29 +40,19 @@ export default {
   },
 
   mounted() {
-    this.getPersons();
+    
   },
 
   methods: {
-    getPersons() {
-      axios.get("/persons")
-      .then((data) => {
-        this.persons = data.data
-        console.log(data);
-      })
-      .catch(error => {
-
-      })
-      .finally({
-        
-      })
-    },
+   
   },
 
   computed: {},
 
   components: {
     SinglePostComponent,
+    CreateComponent,
+    CreateComponent,
   },
 };
 </script>
