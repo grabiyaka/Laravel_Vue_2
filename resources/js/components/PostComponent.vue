@@ -1,7 +1,8 @@
 <template>
   <div>
     <create-component></create-component>
-    <single-post-component></single-post-component>
+    <!-- <single-post-component></single-post-component> -->
+    <IndexComponent></IndexComponent>
     <div>
       <!-- <table class="table">
         <thead>
@@ -27,8 +28,9 @@
 </template>
 
 <script>
-import SinglePostComponent from "./SinglePostComponent.vue";
+// import SinglePostComponent from "./SinglePostComponent.vue";
 import CreateComponent from "./CreateComponent";
+import IndexComponent from "./IndexComponent"
 
 export default {
   name: "PostComponent",
@@ -50,9 +52,9 @@ export default {
   computed: {},
 
   components: {
-    SinglePostComponent,
+    // SinglePostComponent,
     CreateComponent,
-    CreateComponent,
+    IndexComponent,
   },
 };
 </script>
