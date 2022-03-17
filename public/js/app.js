@@ -5461,24 +5461,82 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "IndexComponent",
   data: function data() {
     return {
       people: [],
-      editPerson: null
+      editPerson: null,
+      name: "",
+      age: null,
+      job: ""
     };
   },
   mounted: function mounted() {
     this.getPeople();
   },
   methods: {
+    EditPerson: function EditPerson(id, name, age, job) {
+      this.editPerson = id;
+      this.name = name;
+      this.age = age;
+      this.job = job;
+    },
     getPeople: function getPeople() {
       var _this = this;
 
       axios.get("/api/people").then(function (res) {
         console.log(res);
         _this.people = res.data;
+      });
+    },
+    updatePerson: function updatePerson(id) {
+      var _this2 = this;
+
+      axios.patch("/api/people/".concat(id), {
+        name: this.name,
+        age: this.age,
+        job: this.job
+      }).then(function (res) {
+        console.log(res);
+
+        _this2.getPeople();
+
+        _this2.editPerson = null;
+      });
+    },
+    DeletePerson: function DeletePerson(id) {
+      var _this3 = this;
+
+      axios["delete"]("/api/people/".concat(id)).then(function (res) {
+        _this3.getPeople();
       });
     }
   },
@@ -28430,11 +28488,33 @@ var render = function () {
                           on: {
                             click: function ($event) {
                               $event.preventDefault()
-                              _vm.editPerson = person.id
+                              return _vm.EditPerson(
+                                person.id,
+                                person.name,
+                                person.age,
+                                person.job
+                              )
                             },
                           },
                         },
                         [_vm._v("Edit")]
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function ($event) {
+                              $event.preventDefault()
+                              return _vm.DeletePerson(person.id)
+                            },
+                          },
+                        },
+                        [_vm._v("Delete")]
                       ),
                     ]),
                   ])
@@ -28446,11 +28526,77 @@ var render = function () {
                       _vm._v(_vm._s(person.id)),
                     ]),
                     _vm._v(" "),
-                    _vm._m(1, true),
+                    _c("td", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.name,
+                            expression: "name",
+                          },
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.name },
+                        on: {
+                          input: function ($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.name = $event.target.value
+                          },
+                        },
+                      }),
+                    ]),
                     _vm._v(" "),
-                    _vm._m(2, true),
+                    _c("td", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.age,
+                            expression: "age",
+                          },
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.age },
+                        on: {
+                          input: function ($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.age = $event.target.value
+                          },
+                        },
+                      }),
+                    ]),
                     _vm._v(" "),
-                    _vm._m(3, true),
+                    _c("td", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.job,
+                            expression: "job",
+                          },
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.job },
+                        on: {
+                          input: function ($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.job = $event.target.value
+                          },
+                        },
+                      }),
+                    ]),
                     _vm._v(" "),
                     _c("td", [
                       _c(
@@ -28461,7 +28607,7 @@ var render = function () {
                           on: {
                             click: function ($event) {
                               $event.preventDefault()
-                              _vm.editPerson = null
+                              return _vm.updatePerson(person.id)
                             },
                           },
                         },
@@ -28494,31 +28640,9 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Job")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")]),
       ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("input", { staticClass: "form-control", attrs: { type: "text" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("input", { staticClass: "form-control", attrs: { type: "text" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("input", { staticClass: "form-control", attrs: { type: "text" } }),
     ])
   },
 ]
