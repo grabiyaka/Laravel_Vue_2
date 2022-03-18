@@ -10,11 +10,13 @@
       <input type="text" class="form-control" v-model="job" id="job" placeholder="job">
     </div>
     <div><input @click.prevent="addPerson" value="Add" class="btn btn-primaty" ></div>
+    <SomeComponent></SomeComponent>
   </div>
  
 </template>
 
 <script>
+import SomeComponent from './SomeComponent'
 export default {
   name: "CreateComponent",
 
@@ -26,7 +28,13 @@ export default {
     };
   },
 
-  mounted() {},
+  mounted(){
+    this.$parent.$refs.index.indexLog()
+  },
+
+  comments: {
+    SomeComponent
+  },
 
   methods: {
      addPerson(){
@@ -42,7 +50,7 @@ export default {
 
   computed: {},
 
-  components: {},
+  components: {SomeComponent},
 };
 </script>
 

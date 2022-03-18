@@ -74,7 +74,8 @@ export default {
   },
 
   mounted() {
-    this.getPeople();
+    this.getPeople()
+
   },
 
   methods: {
@@ -99,7 +100,6 @@ export default {
           job: this.job,
         })
         .then((res) => {
-          console.log(res);
           this.getPeople();
           this.editPerson = null;
         });
@@ -110,6 +110,10 @@ export default {
         .then((res) => {
           this.getPeople();
         });
+    },
+
+    indexLog(){
+      console.log('this is index component')
     },
   },
 
