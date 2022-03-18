@@ -10,7 +10,7 @@
       <input type="text" class="form-control" v-model="job" id="job" placeholder="job">
     </div>
     <div><input @click.prevent="addPerson" value="Add" class="btn btn-primaty" ></div>
-    <SomeComponent></SomeComponent>
+    <SomeComponent :obj="obj"></SomeComponent>
   </div>
  
 </template>
@@ -25,6 +25,11 @@ export default {
       name: null,
       age: null,
       job: null,
+      obj: {
+        color: 'ping',
+        number: 9,
+        isPublished: true
+      }
     };
   },
 

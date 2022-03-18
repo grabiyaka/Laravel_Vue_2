@@ -1,5 +1,8 @@
 <template>
   <div >
+    <div>Color: {{ obj.color }}</div>
+    <div>Number: {{ obj.number > 10 ? 'more 10' : 'less 10' }}</div>
+    <div>Is published: {{ obj.isPublished ? 'Published' : 'Not Published'}}</div>
   </div>
  
 </template>
@@ -13,6 +16,10 @@ export default {
      
     };
   },
+
+  props: [
+    'obj'
+  ],
 
   mounted(){
     this.$parent.$parent.$refs.index.indexLog()
