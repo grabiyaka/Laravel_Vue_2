@@ -55,7 +55,7 @@ export default {
     },
     DeletePerson(id) {
       axios.delete(`/api/people/${id}`).then((res) => {
-        this.getPeople();
+        this.$parent.getPeople();
       });
     }
   },

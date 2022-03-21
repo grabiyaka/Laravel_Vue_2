@@ -5722,7 +5722,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios["delete"]("/api/people/".concat(id)).then(function (res) {
-        _this.getPeople();
+        _this.$parent.getPeople();
       });
     }
   },
