@@ -9,6 +9,9 @@
         "prod": "npm run production",
         "production": "mix --production"
     },
+    "dependencies": {
+        "vue-router": "^3.5.3"
+    },
     "devDependencies": {
         "@popperjs/core": "^2.10.2",
         "axios": "^0.25",
