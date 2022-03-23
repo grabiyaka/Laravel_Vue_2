@@ -1,6 +1,6 @@
 <template>
     <div>
-        Create
+        Show
     </div>
 </template>
 
