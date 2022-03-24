@@ -63,7 +63,7 @@ export default {
     update(){
         axios.patch('/api/people/' + this.$route.params.id, {name: this.name, age: this.age, job: this.job,})
         .then( res => {
-            router.push( {name: 'people.show'} )
+            router.push( {name: 'people.show', params: {id: this.$route.params.id}} )
         })
     }
   },

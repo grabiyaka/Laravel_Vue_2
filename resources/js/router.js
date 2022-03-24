@@ -18,12 +18,12 @@ export default new VueRouter({
             name: 'people.create'
         },
         {
-            path: '/people/:id/edit',
+            path: '/people/edit/:id',
             component: () => import('./components/Person/Edit'),
             name: 'people.edit'
         },
         {
-            path: '/people/show',
+            path: '/people/:id',
             component: () => import('./components/Person/Show'),
             name: 'people.show'
         }

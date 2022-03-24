@@ -17,8 +17,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "Show"
+  name: "Show",
+  data: function data() {
+    return {
+      person: {}
+    };
+  },
+  mounted: function mounted() {
+    this.getPerson();
+  },
+  methods: {
+    getPerson: function getPerson() {
+      var _this = this;
+
+      axios.get("/api/people/" + this.$route.params.id).then(function (res) {
+        console.log(res);
+        _this.person = res.data;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -107,7 +128,31 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    Show\n")])
+  return _vm.person
+    ? _c("div", [
+        _c("div", [_vm._v("Name: " + _vm._s(_vm.person.name))]),
+        _vm._v(" "),
+        _c("div", [_vm._v("Age: " + _vm._s(_vm.person.age))]),
+        _vm._v(" "),
+        _c("div", [_vm._v("job: " + _vm._s(_vm.person.job))]),
+        _vm._v(" "),
+        _c(
+          "div",
+          [
+            _c(
+              "router-link",
+              {
+                attrs: {
+                  to: { name: "people.edit", params: { id: _vm.person.id } },
+                },
+              },
+              [_vm._v("Edit")]
+            ),
+          ],
+          1
+        ),
+      ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
