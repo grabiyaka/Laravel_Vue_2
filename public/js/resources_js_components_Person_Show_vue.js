@@ -34,9 +34,9 @@ __webpack_require__.r(__webpack_exports__);
     getPerson: function getPerson() {
       var _this = this;
 
-      axios.get("/api/people/" + this.$route.params.id).then(function (res) {
+      axios.get("/api/people/".concat(this.$route.params.id)).then(function (res) {
         console.log(res);
-        _this.person = res.data;
+        _this.person = res.data.data;
       });
     }
   }

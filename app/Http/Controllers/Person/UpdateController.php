@@ -14,7 +14,7 @@ class UpdateController extends Controller
     {
         $data = $request->validated();
         $person->update($data);
-        return $data;
+        return response([]);
     }
 
 }

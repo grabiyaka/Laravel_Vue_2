@@ -23,9 +23,9 @@ export default {
 
   methods: {
     getPerson() {
-      axios.get("/api/people/" + this.$route.params.id).then((res) => {
+      axios.get(`/api/people/${this.$route.params.id}`).then((res) => {
         console.log(res);
-        this.person = res.data;
+        this.person = res.data.data;
       });
     },
   },
