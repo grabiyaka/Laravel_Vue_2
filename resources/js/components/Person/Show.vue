@@ -13,21 +13,28 @@ export default {
 
   data() {
     return {
-      person: {},
+      //person: {},
     };
   },
 
+  computed: {
+    person(){
+      return this.$store.getters.person
+    }
+  },
+
   mounted() {
-    this.getPerson();
+    this.$store.dispatch('getPerson', this.$route.params.id)
+    //this.getPerson();
   },
 
   methods: {
-    getPerson() {
-      axios.get(`/api/people/${this.$route.params.id}`).then((res) => {
-        console.log(res);
-        this.person = res.data.data;
-      });
-    },
+    // getPerson(id) {
+    //   axios.get(`/api/people/${this.$route.params.id}`).then((res) => {
+    //     console.log(res);
+    //     this.person = res.data.data;
+    //   });
+    // },
   },
 };
 </script>

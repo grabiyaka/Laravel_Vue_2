@@ -23,22 +23,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Show",
   data: function data() {
-    return {
-      person: {}
+    return {//person: {},
     };
   },
-  mounted: function mounted() {
-    this.getPerson();
-  },
-  methods: {
-    getPerson: function getPerson() {
-      var _this = this;
-
-      axios.get("/api/people/".concat(this.$route.params.id)).then(function (res) {
-        console.log(res);
-        _this.person = res.data.data;
-      });
+  computed: {
+    person: function person() {
+      return this.$store.getters.person;
     }
+  },
+  mounted: function mounted() {
+    this.$store.dispatch('getPerson', this.$route.params.id); //this.getPerson();
+  },
+  methods: {// getPerson(id) {
+    //   axios.get(`/api/people/${this.$route.params.id}`).then((res) => {
+    //     console.log(res);
+    //     this.person = res.data.data;
+    //   });
+    // },
   }
 });
 
